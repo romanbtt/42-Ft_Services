@@ -1,15 +1,16 @@
-FROM alpine:3.13.4
+FROM alpine:latest
 
 LABEL maintainer="robitett@student.42sp.org.br"
 
-COPY ./srcs/ /usr/
+COPY srcs/ /
 
-RUN	apk update && \
-	apk add --no-cache nginx openssl
+RUN apk add --no-cache --update \
+    nginx \
+    openssl
 
 RUN mkdir -p /run/nginx && \
-	mv /usr/nginx.conf /etc/nginx/ && \
-	mv /usr/index.html /var/www/
+	mv nginx.conf /etc/nginx/ && \
+	mv index.html /var/www/
 
 RUN mkdir /etc/ssl/ft_services \
     && openssl req -x509 \ 
@@ -20,6 +21,6 @@ RUN mkdir /etc/ssl/ft_services \
     -keyout /etc/ssl/ft_services/selfsigned.key \
     -out /etc/ssl/ft_services/selfsigned.crt
 
-EXPOSE 80 443 22
+EXPOSE 80 443
 
-CMD ./usr/start.sh
+CMD ./start.sh
