@@ -27,14 +27,14 @@ RUN wget -q https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli
 RUN mkdir -p /run/nginx && \
 	mv nginx.conf /etc/nginx/
 
-RUN mkdir /etc/ssl/ft_services \
-    && openssl req -x509 \ 
-    -nodes \
-    -days 365 \
-    -newkey rsa:2048 \
-    -subj "/C=CA/ST=QC/L=Montreal/O=42School/OU=Student/CN=ftservices" \
-    -keyout /etc/ssl/ft_services/selfsigned.key \
-    -out /etc/ssl/ft_services/selfsigned.crt
+#RUN mkdir /etc/ssl/ft_services \
+#    && openssl req -x509 \ 
+#    -nodes \
+#    -days 365 \
+#    -newkey rsa:2048 \
+#    -subj "/C=CA/ST=QC/L=Montreal/O=42School/OU=Student/CN=ftservices" \
+#    -keyout /etc/ssl/ft_services/selfsigned.key \
+#    -out /etc/ssl/ft_services/selfsigned.crt
 
 EXPOSE 5050
 
