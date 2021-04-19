@@ -23,4 +23,4 @@ RUN mkdir /etc/ssl/ft_services \
 
 EXPOSE 80 443
 
-CMD ./start.sh
+CMD sh start.sh

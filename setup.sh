@@ -21,7 +21,7 @@ minikube delete > /dev/null 2>&1
 printf "\e[32;1mDone\n\n\e[0m"
 
 printf "\e[33;1m1 -- Installing Minikube\n\e[0m"
-minikube start --driver=docker > /dev/null 2>&1
+minikube start --driver=docker
 eval $(minikube docker-env)
 printf "\e[32;1mDone\n\n\e[0m"
 
@@ -32,16 +32,20 @@ minikube addons enable metallb
 printf "\e[32;1mDone\n\n\e[0m"
 
 printf "\e[33;1m2 -- Building Images\n\e[0m"
-docker build -t nginx_ft-services srcs/nginx/
-docker build -t mysql_ft-services srcs/mysql/
-docker build -t wordpress_ft-services srcs/wordpress/
-docker build -t phpmyadmin_ft-services srcs/phpmyadmin/
-docker build -t ftps_ft-services srcs/ftps/
-docker build -t influxdb_ft-services srcs/influxdb/
-docker build -t telegraf_ft-services srcs/telegraf/
-docker build -t grafana_ft-services srcs/grafana/
+docker build --network=host -t ft_services/nginx srcs/nginx/
+docker build --network=host -t ft_services/mysql srcs/mysql/
+docker build --network=host -t ft_services/wordpress srcs/wordpress/
+docker build --network=host -t ft_services/phpmyadmin srcs/phpmyadmin/
+# docker build -t ftps_ft-services srcs/ftps/
+# docker build -t influxdb_ft-services srcs/influxdb/
+# docker build -t telegraf_ft-services srcs/telegraf/
+# docker build -t grafana_ft-services srcs/grafana/
 printf "\e[32;1mDone\n\n\e[0m"
 
+kubectl apply -f srcs/k8s/metallb/
+kubectl apply -f srcs/k8s/nginx/
+kubectl apply -f srcs/k8s/mysql/
+kubectl apply -f srcs/k8s/wordpress/
+kubectl apply -f srcs/k8s/phpmyadmin/
 
-
-minikube dashboard &
+#minikube dashboard &

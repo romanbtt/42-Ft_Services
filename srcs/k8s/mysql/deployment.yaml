@@ -12,9 +12,17 @@ spec:
       labels:
         component: mysql
     spec:
+      volumes:
+        - name: mysql-storage
+          persistentVolumeClaim:
+            claimName: mysql-persistent-volume-claim
       containers:
         - name: mysql
-          image: mysql_ft-services:latest
+          image: ft_services/mysql
+          imagePullPolicy: Never
           ports:
             - containerPort: 3306
+          volumeMounts:
+            - name: mysql-storage
+              mountPath: /var/lib/mysql
 

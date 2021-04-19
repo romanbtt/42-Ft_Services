@@ -9,7 +9,7 @@ sed -i 's/#bind-address=0.0.0.0/bind-address=0.0.0.0/g' /etc/my.cnf.d/mariadb-se
 until mysql -e "show databases;" > /dev/null 2>&1
 do
 	echo "Waiting for Mysql's daemon to starting up.."
-    sleep 1
+    sleep 0.5
 done
 echo "Mysql's daemon running!"
 
@@ -22,3 +22,5 @@ mysql < create_tables.sql
 mysql wordpress < wordpress.sql
 
 rm -f create_tables.sql wordpress.sql
+
+tail -F /tmp/mysql.log

@@ -14,7 +14,8 @@ spec:
     spec:
       containers:
         - name: nginx
-          image: nginx_ft-services:latest
+          image: ft_services/nginx
+          imagePullPolicy: Never
           ports:
             - containerPort: 80
             - containerPort: 443

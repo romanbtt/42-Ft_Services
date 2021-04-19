@@ -14,6 +14,7 @@ spec:
     spec:
       containers:
         - name: phpmyadmin
-          image: phpmyadmin_ft-services:latest
+          image: ft_services/phpmyadmin
+          imagePullPolicy: Never
           ports:
             - containerPort: 5000
