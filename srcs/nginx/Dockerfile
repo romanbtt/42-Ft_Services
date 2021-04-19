@@ -4,7 +4,7 @@ LABEL maintainer="robitett@student.42sp.org.br"
 
 COPY srcs/ /
 
-RUN apk add --no-cache --update \
+RUN apk add --no-cache --update --quiet \
     nginx \
     openssl
 

@@ -4,7 +4,7 @@ LABEL maintainer="robitett@student.42sp.org.br"
 
 COPY srcs/ /
 
-RUN apk add --no-cache --update \
+RUN apk add --no-cache --update --quiet \
     nginx \
     php7 \
     php7-fpm \
@@ -15,7 +15,9 @@ RUN apk add --no-cache --update \
     php7-curl \
     php7-mbstring \
     php7-json \
-    php7-session
+    php7-session \
+    php7-phar \
+    openssl \
     wget
 
 RUN wget -q https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar && \
@@ -24,7 +26,7 @@ RUN wget -q https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli
 
 RUN mkdir -p /run/nginx && \
 	mv nginx.conf /etc/nginx/
-    
+
 RUN mkdir /etc/ssl/ft_services \
     && openssl req -x509 \ 
     -nodes \

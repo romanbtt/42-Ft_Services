@@ -4,7 +4,7 @@ LABEL maintainer="robitett@student.42sp.org.br"
 
 COPY srcs/ /
 
-RUN apk add --no-cache --update \
+RUN apk add --no-cache --update --quiet \
     nginx \
     php7 \
     php7-fpm \
@@ -15,10 +15,11 @@ RUN apk add --no-cache --update \
     php7-curl \
     php7-mbstring \
     php7-json \
-    php7-session
+    php7-session \
+    openssl \
     wget
 
-RUN wget https://phpmyadmin.net/downloads/phpMyAdmin-latest-english.tar.gz && \
+RUN wget -q https://phpmyadmin.net/downloads/phpMyAdmin-latest-english.tar.gz && \
     mkdir -p /var/www/phpmyadmin && \
     tar -xzf phpMyAdmin-latest-english.tar.gz -C /var/www/phpmyadmin --strip-components 1 && \
     mv config.inc.php /var/www/phpmyadmin && \
