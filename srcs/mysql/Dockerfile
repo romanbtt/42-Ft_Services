@@ -2,11 +2,15 @@ FROM alpine:latest
 
 LABEL maintainer="robitett@student.42sp.org.br"
 
-COPY srcs/ /
+RUN apk update
 
-RUN apk add --no-cache --update --quiet \
+RUN apk add --no-cache --quiet \
     mysql \
     mysql-client
+
+RUN	mkdir -p /run/mysqld/
+
+COPY srcs/ /
 
 EXPOSE 3306
 

@@ -1,9 +1,10 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: phpmyadmin-deployment
+  name: phpmyadmin
+  labels:
+    component: phpmyadmin
 spec:
-  replicas: 1
   selector:
     matchLabels:
       component: phpmyadmin
@@ -13,8 +14,8 @@ spec:
         component: phpmyadmin
     spec:
       containers:
-        - name: phpmyadmin
-          image: ft_services/phpmyadmin
-          imagePullPolicy: Never
-          ports:
-            - containerPort: 5000
+      - name: phpmyadmin
+        image: ft_services/phpmyadmin
+        ports:
+        - containerPort: 5000
+        imagePullPolicy: Never

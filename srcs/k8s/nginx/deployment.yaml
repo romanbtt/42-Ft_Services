@@ -1,9 +1,10 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: nginx-deployment
+  name: nginx
+  labels:
+    component: nginx
 spec:
-  replicas: 1
   selector:
     matchLabels:
       component: nginx
@@ -13,10 +14,6 @@ spec:
         component: nginx
     spec:
       containers:
-        - name: nginx
-          image: ft_services/nginx
-          imagePullPolicy: Never
-          ports:
-            - containerPort: 80
-            - containerPort: 443
-
+      - name: nginx
+        image: ft_services/nginx
+        imagePullPolicy: Never

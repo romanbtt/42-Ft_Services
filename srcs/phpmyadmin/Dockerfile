@@ -16,6 +16,8 @@ RUN apk add --no-cache --update --quiet \
     php7-mbstring \
     php7-json \
     php7-session \
+    php7-iconv \
+    php7-xml \
     openssl \
     wget
 
