@@ -10,13 +10,7 @@ while true; do
         exit 1
     fi
 
-    ret=$(pgrep -f nginx)
-    if [ "$ret" == "" ]
-    then
-        exit 1
-    fi
-
-    ret=$(pgrep -f php-fpm)
+    ret=$(pgrep -f influxd)
     if [ "$ret" == "" ]
     then
         exit 1

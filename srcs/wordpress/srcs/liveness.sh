@@ -1,11 +1,26 @@
 #!/bin/sh
 
-if ! pgrep "nginx" > /dev/null
-then
-    exit
-fi
+sleep 10
 
-if ! pgrep "php-fpm7" >/dev/null
-then
-    exit
-fi
+while true; do
+
+    ret=$(pgrep -f telegraf)
+    if [ "$ret" == "" ]
+    then
+        exit 1
+    fi
+
+    ret=$(pgrep -f nginx)
+    if [ "$ret" == "" ]
+    then
+        exit 1
+    fi
+
+    ret=$(pgrep -f php-fpm)
+    if [ "$ret" == "" ]
+    then
+        exit 1
+    fi
+
+    sleep 5
+done

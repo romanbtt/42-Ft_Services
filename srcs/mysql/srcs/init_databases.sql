@@ -1,6 +1,6 @@
 
-GRANT ALL PRIVILEGES ON wordpress.* TO 'robitett'@'%' IDENTIFIED BY 'robitett42!';
-GRANT ALL PRIVILEGES ON phpmyadmin.* TO 'pma'@'%' IDENTIFIED BY 'RziSYZ68JJ^6VUoAhRFjc7S$zoGcE%@#';
+GRANT ALL PRIVILEGES ON wordpress.* TO 'robitett'@'%' IDENTIFIED BY 'TPPxG9ydre';
+GRANT ALL PRIVILEGES ON phpmyadmin.* TO 'pma'@'%' IDENTIFIED BY 'Hov4Y5kiru';
 FLUSH PRIVILEGES;
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
@@ -403,7 +403,7 @@ CREATE TABLE IF NOT EXISTS `wp_users` (
 ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 INSERT INTO `wp_users` (`ID`, `user_login`, `user_pass`, `user_nicename`, `user_email`, `user_url`, `user_registered`, `user_activation_key`, `user_status`, `display_name`) VALUES
-(1, 'robitett', '$P$BpGW8ZfMbdzmGAu.yGB7/q6D9xo5wA1', 'robitett', 'robitett@42.com', 'http://MINIKUBE_IP:5050', '2021-04-23 18:39:37', '', 0, 'robitett'),
+(1, 'robitett', '$P$BIcZlBLf/hpDCP2jsRT074hosqTD7D/', 'robitett', 'robitett@42.com', 'http://MINIKUBE_IP:5050', '2021-04-23 18:39:37', '', 0, 'robitett'),
 (2, 'Bill', '$P$BYFudwVpN8ocUsW7mqExAtUszuc7ck0', 'bill', 'bill@microsoft.com', 'https://www.microsoft.com/', '2021-04-23 18:40:58', '1619203258:$P$BkBXR4IGCi.H84/.bZwyIuhhMF6rLX0', 0, 'Bill Gates'),
 (3, 'Elon', '$P$BrfkfDlURuOkJlkPntD1oPJ7d39UMD0', 'elon', 'elon@spacex.com', 'https://www.spacex.com/', '2021-04-23 18:41:38', '1619203298:$P$B7lJ9lX.HyCtn74SOYBWQ3/6vdS/BI1', 0, 'Elon Musk'),
 (4, 'Jeff', '$P$Bd4WeVF3xE8joGlgg8rz5pT9RpHvKv1', 'jeff', 'jeff@amazon.com', 'https://www.amazon.com/', '2021-04-23 18:41:54', '1619203314:$P$B5KEc4IFwgOl8aHvTKq.F52YOuRv2F1', 0, 'Jeff Bezos');

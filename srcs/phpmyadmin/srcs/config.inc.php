@@ -43,7 +43,7 @@ $cfg['TempDir'] = '/tmp';
 // $cfg['Servers'][$i]['controlhost'] = '';
 // $cfg['Servers'][$i]['controlport'] = '';
  $cfg['Servers'][$i]['controluser'] = 'pma';
- $cfg['Servers'][$i]['controlpass'] = 'RziSYZ68JJ^6VUoAhRFjc7S$zoGcE%@#';
+ $cfg['Servers'][$i]['controlpass'] = 'Hov4Y5kiru';
 
 /* Storage database and tables */
  $cfg['Servers'][$i]['pmadb'] = 'phpmyadmin';

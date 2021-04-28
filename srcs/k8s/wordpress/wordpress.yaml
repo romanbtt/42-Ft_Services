@@ -25,6 +25,7 @@ metadata:
   labels:
     component: wordpress
 spec:
+  replicas: 1
   selector:
     matchLabels:
       component: wordpress

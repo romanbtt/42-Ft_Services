@@ -1,23 +1,19 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: nginx
+  name: grafana
   annotations:
     metallb.universe.tf/allow-shared-ip: shared
   labels:
-    component: nginx
+    component: grafana
 spec:
   selector:
-    component: nginx
+    component: grafana
   ports:
-    - name: http
+    - name: grafana-port
       protocol: TCP
-      port: 80
-      targetPort: 80
-    - name: https
-      protocol: TCP
-      port: 443
-      targetPort: 443
+      port: 3000
+      targetPort: 3000
   type: LoadBalancer
 
 ---
@@ -25,20 +21,22 @@ spec:
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: nginx
+  name: grafana
   labels:
-    component: nginx
+    component: grafana
 spec:
   replicas: 1
   selector:
     matchLabels:
-      component: nginx
+      component: grafana
   template:
     metadata:
       labels:
-        component: nginx
+        component: grafana
     spec:
       containers:
-      - name: nginx
-        image: ft_services/nginx
+      - name: grafana
+        image: ft_services/grafana
+        ports:
+        - containerPort: 3000
         imagePullPolicy: Never

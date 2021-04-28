@@ -1,8 +1,13 @@
 FROM alpine:latest
 
+LABEL maintainer="robitett@student.42sp.org.br"
+
+COPY srcs/ /
+
 RUN apk update
 
-RUN	apk add --no-cache \
+RUN apk add --no-cache \
+    nginx \
     php7 \
     php7-fpm \
     php7-opcache \
@@ -15,12 +20,8 @@ RUN	apk add --no-cache \
     php7-session \
     php7-iconv \
     php7-xml \
-    nginx
-
-COPY srcs/ /
-
-RUN mkdir -p /run/nginx && \
-	mv nginx.conf /etc/nginx/
+    wget \
+    telegraf --repository http://dl-3.alpinelinux.org/alpine/edge/community/ --allow-untrusted
 
 RUN wget -q https://phpmyadmin.net/downloads/phpMyAdmin-latest-english.tar.gz && \
     mkdir -p /var/www/phpmyadmin && \
@@ -28,6 +29,12 @@ RUN wget -q https://phpmyadmin.net/downloads/phpMyAdmin-latest-english.tar.gz &&
     mv config.inc.php /var/www/phpmyadmin && \
     rm -f phpMyAdmin-latest-english.tar.gz
 
+RUN mkdir -p /run/nginx && \
+	mv nginx.conf /etc/nginx/
+
+RUN mkdir -p /etc/telegraf/ && \
+    mv telegraf.conf /etc/telegraf/
+
 EXPOSE 5000
 
-CMD ./start.sh
+CMD sh start.sh

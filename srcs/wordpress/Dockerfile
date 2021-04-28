@@ -13,12 +13,16 @@ RUN	apk add --no-cache \
     php7-mbstring \
     php7-json \
     php7-session \
-    nginx
+    nginx \
+    telegraf --repository http://dl-3.alpinelinux.org/alpine/edge/community/ --allow-untrusted
 
 COPY srcs/ /
 
 RUN mkdir -p /run/nginx && \
 	mv nginx.conf /etc/nginx/
+
+RUN mkdir -p /etc/telegraf/ && \
+    mv telegraf.conf /etc/telegraf/
 
 RUN wget -q http://wordpress.org/latest.tar.gz && \
     mkdir -p /var/www/wordpress && \

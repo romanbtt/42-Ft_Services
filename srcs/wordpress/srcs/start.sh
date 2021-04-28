@@ -1,5 +1,9 @@
 #!/bin/sh
 
-/usr/sbin/php-fpm7
+/usr/bin/telegraf &
 
-/usr/sbin/nginx -g "daemon off;"
+/usr/sbin/php-fpm7 &
+
+/usr/sbin/nginx -g "daemon off;" &
+
+./liveness.sh

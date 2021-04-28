@@ -1,10 +1,127 @@
 <!DOCTYPE html>
 <html>
+<title>FT_SERVICES by robitett</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <body>
 
+<script>
+  function myFunction_wp() {
+    var x = document.getElementById("wordpress");
+    if (x.type === "password") {
+      x.type = "text";
+    } else {
+      x.type = "password";
+    }
+  }
+
+  function myFunction_pmawp() {
+    var x = document.getElementById("phpmyadmin.wp");
+    if (x.type === "password") {
+      x.type = "text";
+    } else {
+      x.type = "password";
+    }
+  }
+
+  function myFunction_pma() {
+    var x = document.getElementById("phpmyadmin.pma");
+    if (x.type === "password") {
+      x.type = "text";
+    } else {
+      x.type = "password";
+    }
+  }
+
+  function myFunction_grafana() {
+    var x = document.getElementById("grafana");
+    if (x.type === "password") {
+      x.type = "text";
+    } else {
+      x.type = "password";
+    }
+  }
+
+  function myFunction_ftps() {
+    var x = document.getElementById("ftps");
+    if (x.type === "password") {
+      x.type = "text";
+    } else {
+      x.type = "password";
+    }
+  }
+</script>
+
+
+
+<div class="w3-container w3-teal">
 <h1>Ft Services</h1>
+</div>
 
-<p>By Roman Bitetti</p>
+<div class="w3-content">
 
+<div class="w3-row w3-margin">
+
+<div class="w3-third">
+  <img src="https://symbols.getvecta.com/stencil_101/78_wordpress-icon.a631ef9e67.png" style="width:100%;min-height:100%">
+</div>
+<div class="w3-twothird w3-container">
+  <h2>Wordpress</h2>
+  <p><a href="http://MINIKUBE_IP:5050">MINIKUBE_IP:5050</a></p>
+  <p><a href="http://MINIKUBE_IP:5050/wp-login.php">MINIKUBE_IP:5050/wp-login.php</a></p>
+  <p>User : robitett</p>
+  Password: <input type="password" value="AUhFu5MX4o" id="wordpress">
+<input type="checkbox" onclick="myFunction_wp()">Show Password
+
+
+</div>
+
+</div>
+<div class="w3-row w3-margin">
+
+<div class="w3-third">
+  <img src="https://symbols.getvecta.com/stencil_91/63_phpmyadmin.16d1888730.png" style="width:100%;min-height:100%">
+</div>
+<div class="w3-twothird w3-container">
+  <h2>PhpMyAdmin</h2>
+  <p><a href="http://MINIKUBE_IP:5000">MINIKUBE_IP:5000</a></p>
+  <p>User : robitett</p>
+  Password: <input type="password" value="TPPxG9ydre" id="phpmyadmin.wp">
+  <input type="checkbox" onclick="myFunction_pmawp()">Show Password
+  <p>User : pma</p>
+  Password: <input type="password" value="Hov4Y5kiru" id="phpmyadmin.pma">
+  <input type="checkbox" onclick="myFunction_pma()">Show Password
+</div>
+
+</div>
+<div class="w3-row w3-margin">
+
+<div class="w3-third">
+  <img src="https://symbols.getvecta.com/stencil_82/58_grafana-icon.e4a9200593.png" style="width:100%;min-height:100%">
+</div>
+<div class="w3-twothird w3-container">
+  <h2>Grafana</h2>
+  <p><a href="http://MINIKUBE_IP:3000">MINIKUBE_IP:3000</a></p>
+  <p>User : robitett</p>
+  Password: <input type="password" value="Fn9zxPgcnc" id="grafana">
+<input type="checkbox" onclick="myFunction_grafana()">Show Password
+</div>
+</div>
+
+<div class="w3-row w3-margin">
+
+  <div class="w3-third">
+    <img src="https://symbols.getvecta.com/stencil_37/13_file-server.40e49c3fd6.png" style="width:100%;min-height:100%">
+  </div>
+  <div class="w3-twothird w3-container">
+    <h2>Ftps</h2>
+    <p>User : robitett</p>
+    Password: <input type="password" value="c6zAcLjBW2" id="ftps">
+  <input type="checkbox" onclick="myFunction_ftps()">Show Password
+  </div>
+  
+  </div>
+
+</div>
 </body>
 </html>
