@@ -19,15 +19,15 @@ if [ $? -ne 0 ]; then printf "\033[1;31mError\033[0m\n" ; exit; fi
 
 printf "\e[34;1mI. -- Setting up the environment\n\e[0m"
 
-printf "\e[34;1m   1.  -- Changing owner of docker's socket.\e[0m "
+printf "\e[34;1m   1.  -- Restarting docker daemon.\e[0m "
+sudo systemctl restart docker 2> error.log &> /dev/null
+if [ $? -ne 0 ]; then printf "\033[1;31mError\033[0m\n" ; exit; fi
+printf "\e[32;1mDone\n\e[0m"
+
+printf "\e[34;1m   2.  -- Changing owner of docker's socket.\e[0m "
 sudo chown $USER /var/run/docker.sock 2> error.log &> /dev/null
 if [ $? -ne 0 ]; then printf "\033[1;31mError\033[0m\n" ; exit; fi
 sudo systemctl stop nginx &> /dev/null
-printf "\e[32;1mDone\n\e[0m"
-
-printf "\e[34;1m   2.  -- Restarting docker daemon.\e[0m "
-sudo systemctl restart docker 2> error.log &> /dev/null
-if [ $? -ne 0 ]; then printf "\033[1;31mError\033[0m\n" ; exit; fi
 printf "\e[32;1mDone\n\e[0m"
 
 printf "\e[34;1m   3.  -- Setting google chrome as default web browser.\e[0m "
