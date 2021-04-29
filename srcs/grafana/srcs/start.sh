@@ -4,4 +4,4 @@
 
 grafana-server --homepath=/usr/share/grafana &
 
-./liveness.sh
+./livenessprobe.sh

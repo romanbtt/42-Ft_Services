@@ -6,4 +6,4 @@
 
 /usr/sbin/nginx -g "daemon off;" &
 
-./liveness.sh
+./livenessprobe.sh

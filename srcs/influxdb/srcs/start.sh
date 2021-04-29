@@ -9,4 +9,4 @@ influx -execute "USE metrics"
 influx -execute "CREATE USER robitett WITH PASSWORD 'Nj7kV6oTpF'"
 influx -execute "GRANT ALL ON metrics TO robitett"
 
-./liveness.sh
+./livenessprobe.sh
