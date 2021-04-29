@@ -25,53 +25,58 @@ if [ $? -ne 0 ]; then printf "\033[1;31mError\033[0m\n" ; exit; fi
 sudo systemctl stop nginx &> /dev/null
 printf "\e[32;1mDone\n\e[0m"
 
-printf "\e[34;1m   2.  -- Setting google chrome as default web browser.\e[0m "
+printf "\e[34;1m   2.  -- Restarting docker daemon.\e[0m "
+sudo systemctl restart docker 2> error.log &> /dev/null
+if [ $? -ne 0 ]; then printf "\033[1;31mError\033[0m\n" ; exit; fi
+printf "\e[32;1mDone\n\e[0m"
+
+printf "\e[34;1m   3.  -- Setting google chrome as default web browser.\e[0m "
 xdg-settings set default-web-browser google-chrome.desktop &> /dev/null
 printf "\e[32;1mDone\n\e[0m"
 
-printf "\e[34;1m   3.  -- Deleting all deployments.\e[0m "
+printf "\e[34;1m   4.  -- Deleting all deployments.\e[0m "
 kubectl delete deployments --all &> /dev/null
 printf "\e[32;1mDone\n\e[0m"
 
-printf "\e[34;1m   4.  -- Deleting all services.\e[0m "
+printf "\e[34;1m   5.  -- Deleting all services.\e[0m "
 kubectl delete services --all &> /dev/null
 printf "\e[32;1mDone\n\e[0m"
 
-printf "\e[34;1m   5.  -- Deleting all pods.\e[0m "
+printf "\e[34;1m   6.  -- Deleting all pods.\e[0m "
 kubectl delete pods --all &> /dev/null
 printf "\e[32;1mDone\n\e[0m"
 
-printf "\e[34;1m   6.  -- Deleting all persistent volume claims.\e[0m "
+printf "\e[34;1m   7.  -- Deleting all persistent volume claims.\e[0m "
 kubectl delete pvc --all &> /dev/null
 printf "\e[32;1mDone\n\e[0m"
 
-printf "\e[34;1m   7.  -- Deleting all persistent volume.\e[0m "
+printf "\e[34;1m   8.  -- Deleting all persistent volume.\e[0m "
 kubectl delete pv --all &> /dev/null
 printf "\e[32;1mDone\n\e[0m"
 
-printf "\e[34;1m   8.  -- Stopping Minikube.\e[0m "
+printf "\e[34;1m   9.  -- Stopping Minikube.\e[0m "
 minikube stop &> /dev/null
 printf "\e[32;1mDone\n\e[0m"
 
-printf "\e[34;1m   9.  -- Deleting Minikube.\e[0m "
+printf "\e[34;1m   10. -- Deleting Minikube.\e[0m "
 minikube delete &> /dev/null
 rm -rf ~/.kube
 rm -rf ~/.minikube
 printf "\e[32;1mDone\n\e[0m"
 
-printf "\e[34;1m   10. -- Stopping all containers.\e[0m "
+printf "\e[34;1m   11. -- Stopping all containers.\e[0m "
 docker stop $(docker ps -a -q) &> /dev/null
 printf "\e[32;1mDone\n\e[0m"
 
-printf "\e[34;1m   11. -- Deleting all containers.\e[0m "
+printf "\e[34;1m   12. -- Deleting all containers.\e[0m "
 docker rm $(docker ps -a -q) &> /dev/null
 printf "\e[32;1mDone\n\e[0m"
 
-printf "\e[34;1m   12. -- Deleting all images.\e[0m "
+printf "\e[34;1m   13. -- Deleting all images.\e[0m "
 docker rmi $(docker images -a -q) &> /dev/null
 printf "\e[32;1mDone\n\e[0m"
 
-printf "\e[34;1m   13. -- Installing the latest version of Minikube.\e[0m "
+printf "\e[34;1m   14. -- Installing the latest version of Minikube.\e[0m "
 wget -q https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64 &> /dev/null
 if [ $? -ne 0 ]; then printf "\033[1;31mError\033[0m\n" ; exit; fi
 chmod +x minikube-linux-amd64 &> /dev/null
@@ -142,8 +147,8 @@ if [ $? -ne 0 ]; then printf "\033[1;31mError Check error.log\033[0m\n" ; exit; 
 printf "\e[32;1mDone\n\e[0m"
 
 build_and_deploy mysql '2. ' '3. '
-build_and_deploy phpmyadmin '4 .' '5. '
-build_and_deploy wordpress '6. ' '7. '
+build_and_deploy wordpress '4 .' '5. '
+build_and_deploy phpmyadmin '6. ' '7. '
 build_and_deploy nginx '8. ' '9. '
 build_and_deploy ftps '10.' '11.'
 build_and_deploy influxdb '12.' '13.'
